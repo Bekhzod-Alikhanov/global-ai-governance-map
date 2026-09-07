@@ -54,10 +54,22 @@ describe("shareable URL state", () => {
 
   it("drops invalid values rather than trusting arbitrary URLs", () => {
     const parsed = parseShareableState("?lens=bad&inst=bad-id&country=NOPE&density=nope");
-    expect(parsed.lens).toBe("workbench");
+    expect(parsed.lens).toBe("geography");
     expect(parsed.filters.selectedInstrumentIds).toEqual([]);
     expect(parsed.selectedIso3).toBeNull();
     expect(parsed.networkDensity).toBe("all");
+  });
+
+  it("opens empty URLs in Geography while preserving explicit Workbench links", () => {
+    expect(parseShareableState("").lens).toBe("geography");
+    expect(serializeShareableState(DEFAULT_SHAREABLE_STATE)).toBe("");
+    expect(
+      serializeShareableState({
+        ...DEFAULT_SHAREABLE_STATE,
+        lens: "workbench",
+      }),
+    ).toBe("?lens=workbench");
+    expect(parseShareableState("?lens=workbench").lens).toBe("workbench");
   });
 
   it("round-trips workbench comparison, scenario, atlas, and active question state", () => {

@@ -10,8 +10,8 @@ It connects **192 countries, 37 international instruments, 75 national AI rules 
   <a href="https://global-ai-governance-map.vercel.app"><img alt="Live" src="https://img.shields.io/badge/live-global--ai--governance--map.vercel.app-1E40AF?style=flat-square&logo=vercel" /></a>
   <img alt="Release" src="https://img.shields.io/badge/release-17_August_2026-B45309?style=flat-square" />
   <img alt="Sources" src="https://img.shields.io/badge/sourced_records-2%2C337-0F766E?style=flat-square" />
-  <img alt="Tests" src="https://img.shields.io/badge/tests-291_unit%2Fnode_%2B_58_e2e-6E9F18?style=flat-square" />
-  <img alt="Codebase" src="https://img.shields.io/badge/code-50%2C946_non--blank_lines-6D28D9?style=flat-square" />
+  <img alt="Tests" src="https://img.shields.io/badge/tests-292_unit%2Fnode_%2B_58_e2e-6E9F18?style=flat-square" />
+  <img alt="Codebase" src="https://img.shields.io/badge/code-50%2C957_non--blank_lines-6D28D9?style=flat-square" />
   <img alt="License" src="https://img.shields.io/badge/code-MIT-555?style=flat-square" />
   <img alt="Data license" src="https://img.shields.io/badge/data-CC_BY_4.0-555?style=flat-square" />
 </p>
@@ -170,7 +170,7 @@ The full reasoning, including a hostile three-perspective audit of this project 
 - The lens switcher implements the ARIA tabs pattern properly — roving tabindex, arrow keys, a real tab panel.
 - Automated WCAG 2.1 A/AA checks (axe) run in CI across every view.
 - Renders down to 390 px. No horizontal scroll; filters collapse behind one control on phones.
-- **127 KB gzipped** for the application shell and **259 KB gzipped** for the complete default Workbench route. Heavy non-default views remain lazy-loaded.
+- **127 KB gzipped** for the application shell and **259 KB gzipped** for the complete Workbench route. Heavy secondary views remain lazy-loaded.
 - CSP, `nosniff`, `Referrer-Policy` and `Permissions-Policy` on every response; embed routes framed deliberately.
 
 Measured release budgets (`npm run build && npm run check:performance`):
@@ -179,7 +179,7 @@ Measured release budgets (`npm run build && npm run check:performance`):
 | --- | ---: | ---: |
 | Initial JavaScript | 459,822 B | 725,000 B |
 | Initial JavaScript gzip | 126,758 B | 220,000 B |
-| Default Workbench route gzip | 258,851 B | 270,000 B |
+| Workbench route gzip | 258,851 B | 270,000 B |
 | Atlas lazy chunk | 417,373 B | 430,000 B |
 | Corpus lazy gzip | 19,989 B | 20,500 B |
 | Total JavaScript | 1,426,898 B | 1,610,000 B |
@@ -195,7 +195,7 @@ Client-only: a static build, no backend, no API keys, no accounts. Data lives in
 ```bash
 npm install
 npm run dev          # http://localhost:5173
-npm test             # 291 tests (268 Vitest + 23 Node-native)
+npm test             # 292 tests (269 Vitest + 23 Node-native)
 npm run test:e2e     # 58 desktop/mobile Playwright tests, including axe
 npm run build        # validates data, generates JSON, sitemap and 542 record pages
 ```
@@ -204,7 +204,7 @@ Quality gates: `npm run lint`, `npm run typecheck`, `npm run validate:data`, `np
 
 ### Codebase scale
 
-The repository contains **53,148 physical lines and 50,946 non-blank lines across 175 tracked code files**. The count covers TypeScript, TSX, JavaScript/MJS, CSS and HTML, including application code, typed data modules, validation tooling and tests. It excludes dependencies, generated JSON, documentation, images, test screenshots and build output.
+The repository contains **53,160 physical lines and 50,957 non-blank lines across 175 tracked code files**. The count covers TypeScript, TSX, JavaScript/MJS, CSS and HTML, including application code, typed data modules, validation tooling and tests. It excludes dependencies, generated JSON, documentation, images, test screenshots and build output.
 
 This definition is stated explicitly because repository line counts can otherwise be inflated by generated data or vendored packages. The figure was calculated from files returned by `git ls-files`, so it is reproducible from the committed repository.
 

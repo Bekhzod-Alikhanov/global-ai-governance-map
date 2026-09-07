@@ -30,16 +30,16 @@ test.describe("lens switcher tab pattern", () => {
 
     // Arrow keys move selection, which is what role="tab" promises.
     await selected.focus();
-    await expect(page.getByRole("tab", { name: "Workbench" })).toHaveAttribute("aria-selected", "true");
-    await page.keyboard.press("ArrowRight");
     await expect(page.getByRole("tab", { name: "Geography" })).toHaveAttribute("aria-selected", "true");
-    await page.keyboard.press("ArrowLeft");
+    await page.keyboard.press("ArrowRight");
     await expect(page.getByRole("tab", { name: "Workbench" })).toHaveAttribute("aria-selected", "true");
+    await page.keyboard.press("ArrowLeft");
+    await expect(page.getByRole("tab", { name: "Geography" })).toHaveAttribute("aria-selected", "true");
 
     await page.keyboard.press("End");
     await expect(page.getByRole("tab", { name: "Table" })).toHaveAttribute("aria-selected", "true");
     await page.keyboard.press("Home");
-    await expect(page.getByRole("tab", { name: "Workbench" })).toHaveAttribute("aria-selected", "true");
+    await expect(page.getByRole("tab", { name: "Geography" })).toHaveAttribute("aria-selected", "true");
   });
 });
 
@@ -67,10 +67,10 @@ test.describe("accessibility smoke checks", () => {
     await expectNoA11yViolations(page);
   });
 
-  test("Workbench is the accessible default view", async ({ page }) => {
+  test("Geography is the accessible default view", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("tab", { name: "Workbench" })).toHaveAttribute("aria-selected", "true");
-    await expect(page.getByRole("heading", { name: "Answer concrete AI-governance questions" })).toBeVisible();
+    await expect(page.getByRole("tab", { name: "Geography" })).toHaveAttribute("aria-selected", "true");
+    await expect(page.getByRole("heading", { name: "AI Governance Map" })).toBeVisible();
 
     await expectNoA11yViolations(page);
   });

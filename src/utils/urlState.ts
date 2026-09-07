@@ -158,7 +158,7 @@ const WORKBENCH_COMPARE_KINDS = new Set<WorkbenchCompareKind>([
 ]);
 
 export const DEFAULT_SHAREABLE_STATE: ShareableAppState = {
-  lens: "workbench",
+  lens: "geography",
   filters: DEFAULT_FILTER_STATE,
   selectedIso3: null,
   selectedLabId: null,
